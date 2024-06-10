@@ -50,7 +50,7 @@ div:nth-last-of-type(1) {
 /* Fonts && colors setups */
 
 html {
-    background-color: #5b5c8a46;
+    background-color: #9292a746;
 }
 
 .calculator {
@@ -58,7 +58,7 @@ html {
 }
 
 #display {
-    background-color: rgba(180, 189, 181, 0.705);
+    background-color: rgba(147, 148, 147, 0.705);
 }
 
 #display,
