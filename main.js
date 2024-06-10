@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let num1 = null;
     let operator = null;
     let num2 = null;
+    let result;
 
     numberButtons.forEach(button => {
         button.addEventListener("click", () => {
@@ -71,31 +72,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function calculate(op) { //  Esse 'op' é o argumento que será recebido a partir do clique no botão "=", passado na linha 26
-        let result;
 
         if(operator && num1 !== null) {
             num2 = parseFloat(display.textContent);
 
+            if(operator === '/' && num2 === 0){
+                display.textContent = "This is impossible!";
+                num1 = null;
+                operator = null;
+                return;
+            } 
+
             switch(operator) {
                 case '+':
                     result = add(num1, num2);
-                    display.textContent = result;
                     break;
                 case '-':
                     result = subtract(num1, num2);
-                    display.textContent = result;
                     break;
                 case 'X':
                     result = multiply(num1, num2);
-                    display.textContent = result;
                     break; 
                 case '/':
                     result = divide(num1, num2);
-                    display.textContent = result;
                     break;
             }
+            display.textContent = result;
             num1 = parseFloat(display.textContent);
-            op === "=" ? null : op;
+            operator = op !== "=" ? op : null;
+
+            if(op !== "=") {
+                display.textContent = "0";
+            }
         }
     }
 });
